@@ -20,10 +20,26 @@ $command > /dev/null 2>&1 &
 
 }
 
-
+# To execute this from CLI --> /etc/init.d/agent_controller_ubuntu.sh stop
 stop(){
 echo "Going to kill process agent_controller_ubuntu.sh"
 pkill  agent_controller_ubuntu.sh
+
+
+pId=$(ps -ef | grep 'infraGuardMain' | grep -v 'grep' | awk '{ printf $2 }')
+echo "pId = : $pId"
+command="/bin/kill -9 $pId"
+$command
+
+
+
+if [ $? != 0 ]; then                   
+   echo "Unable to kill process id $pId" 
+else
+   command="update-rc.d -f agent_controller_ubuntu.sh remove"
+   $command 
+   echo "Process $pId killed successfully " 
+fi
 
 }
 
