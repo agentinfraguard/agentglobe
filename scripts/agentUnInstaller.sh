@@ -10,7 +10,7 @@ getValue "removeProcessCmd"
 # value of serviceFile was saved at the time of agent installation and it may be
 # agent_controller.sh or agent_controller.service or agent_controller_ubuntu.sh
 echo "serviceFile = : $serviceFile"
-echo "removeProcessCmd = : $removeProcessCmd"
+
 
 
 # Since serviceFile file exist in /etc/init.d/ directory. So ensure proper file MUST BE EXIST( to 
@@ -22,11 +22,12 @@ if [[ $serviceFile != *"agent_controller"*  ||
 fi
 
 
-echo "Stopping the service..."
-# command="pkill  $serviceFile"
-# $command
-
-killTheProcess
+if [ "$isProcessRunning" -gt 0 ]; then
+  echo "Killing the process..."
+  killTheProcess
+else
+   echo "Detected - Agent already stopped."
+fi
 
 
 # Restrict service to restart on reboot
@@ -34,8 +35,6 @@ killTheProcess
 # value of removeProcessCmd was saved at the time of agent installation
 echo "Restrict process to restart on reboot..."
 $removeProcessCmd 
-
-
 
 
 echo "Deleting /opt/infraguard/ directory..."
@@ -55,7 +54,6 @@ echo ""
 echo "****************** Uninstallation process completes. *******************"
 
 } #Uninstall
-
 
 
 # Read the given 'key' from /opt/infraguard/etc/agentInfo.txt file
@@ -82,11 +80,26 @@ getValue(){
 }
 
 
-killTheProcess(){
-   # Getting the PID of the process
+determineProcessRunningOrNot(){
    PID=$(ps -ef | grep 'infraGuardMain' | grep -v 'grep' | awk '{ printf $2 }')
-   echo "PID = : $PID"
+   
+   ps --pid $PID &>/dev/null
+   if [ $? -eq 0 ]; then
+      isProcessRunning=1
+      echo "Agent is running & its PID = : $PID"
+   else
+      isProcessRunning=0
+   fi
 
+} # DetermineProcessRunningOrNot
+
+
+killTheProcess(){
+   
+   
+   echo "Going to kill process id = : $PID by using normal signal."
+   echo "Signal -9 will be fire only after 10 seconds if unable to kill process normally ... "
+   
    # Number of seconds to wait before using "kill -9"
    WAIT_SECONDS=10
 
@@ -130,6 +143,10 @@ if [ ! -f $fileName ]; then
     echo "Missing file $fileName. This file should be created at the time of agent installation."
     exit 1
 fi
+
+PID=""
+declare -i isProcessRunning=-1
+determineProcessRunningOrNot
 
 
 serviceFile=""
