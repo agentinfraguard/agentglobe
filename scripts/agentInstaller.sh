@@ -106,7 +106,7 @@ installAgent() {
     #echo "gitFullPath = : $gitFullPath"
     echo "Downloading $fileAgentController "
     #local url="wget -O /tmp/$fileAgentController https://raw.githubusercontent.com/agentinfraguard/agent/master/scripts/$fileAgentController"
-    local url="wget -O /tmp/$fileAgentController $gitFullPath"
+    local url="wget -O /tmp/$fileAgentController $gitFullPath --no-check-certificate "
     wget $url--progress=dot $url 2>&1 | grep --line-buffered "%" | sed -u -e "s,\.,,g" | awk '{printf("\b\b\b\b%4s", $2)}'
     command="mv /tmp/$fileAgentController  /etc/init.d"
     $command
@@ -127,7 +127,7 @@ installAgent() {
     #echo "gitFullPath = : $gitFullPath"
     echo ""
     echo "Downloading infraGuardMain executable. It will take time. Please wait...."
-    url="wget -O /opt/infraguard/sbin/infraGuardMain $gitFullPath"
+    url="wget -O /opt/infraguard/sbin/infraGuardMain $gitFullPath --no-check-certificate "
     
     #url="wget -O /opt/infraguard/sbin/infraGuardMain https://raw.githubusercontent.com/agentinfraguard/agent/master/go/src/test/infraGuardMain"
     wget $url--progress=dot $url 2>&1 | grep --line-buffered "%" | sed -u -e "s,\.,,g" | awk '{printf("\b\b\b\b%4s", $2)}'
@@ -146,7 +146,7 @@ installAgent() {
 
     echo ""
     echo "Downloading property file i.e agentConstants.txt ...."
-    url="wget -O /opt/infraguard/etc/agentConstants.txt $gitFullPath"
+    url="wget -O /opt/infraguard/etc/agentConstants.txt $gitFullPath --no-check-certificate "
     wget $url--progress=dot $url 2>&1 | grep --line-buffered "%" | sed -u -e "s,\.,,g" | awk '{printf("\b\b\b\b%4s", $2)}'
     echo "agentConstants.txt downloaded."
 
