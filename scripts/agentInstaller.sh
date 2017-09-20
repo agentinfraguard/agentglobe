@@ -83,16 +83,16 @@ getFilePath(){
     if [[ $fileName == "agent_controller.sh"  ||
          $fileName == "agent_controller.service" ||
          $fileName == "agent_controller_ubuntu.sh" ]]; then
-       gitFullPath="https://raw.githubusercontent.com/$repoName/agent/master/scripts/$fileName"
+       gitFullPath="https://raw.githubusercontent.com/$repoName/agentglobe/master/scripts/$fileName"
 
     fi
 
     if [[ $fileName == "infraGuardMain" ]]; then
-       gitFullPath="https://raw.githubusercontent.com/$repoName/agent/master/go/src/agentController/infraGuardMain"
+       gitFullPath="https://raw.githubusercontent.com/$repoName/agentglobe/master/go/src/agentController/infraGuardMain"
     fi
 
     if [[ $fileName == "agentConstants.txt" ]]; then
-       gitFullPath="https://raw.githubusercontent.com/$repoName/agent/master/go/src/agentConstants.txt"
+       gitFullPath="https://raw.githubusercontent.com/$repoName/agentglobe/master/go/src/agentConstants.txt"
     fi
 
 }
