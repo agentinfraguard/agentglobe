@@ -14,6 +14,27 @@
 # responseUrl_unlockServer="https://s93ahm7o93.execute-api.us-west-2.amazonaws.com/dev/unlockserver"
 
 
+########### For Testing Server - ip 52.221.15.30  Globe Application ######################
+
+#Instructions for agent
+getInstruction="http://demo.infraguard.io/getInstructionsForAgent"
+
+# Url for Server Regn Process
+serverRegn="http://demo.infraguard.io/serverRegistration"
+
+
+# Response Url for different activity. Used when agent finishes their job and returns work status
+responseUrl_addUser="http://demo.infraguard.io/addedUserByAgent"
+responseUrl_deleteUser="http://demo.infraguard.io/deletedUserByAgent"
+responseUrl_changePrivilege="http://demo.infraguard.io/privilegeChangedByAgent"
+responseUrl_lockDownServer="http://demo.infraguard.io/serverLockedDown"
+responseUrl_unlockServer="http://demo.infraguard.io/serverUnlocked"
+responseUrl_changePrivEmail="http://demo.infraguard.io/changePrivilegeEmail"
+
+responseUrl_mailUpdatedKey="http://demo.infraguard.io/mailUpdatedKey"
+responseUrl_addPubKey="http://demo.infraguard.io/onRequestServerAccessGranted"
+responseUrl_deletePubKey="http://demo.infraguard.io/serverAccessRevoked"
+responseUrl_updateServerDefaultUserKey="http://demo.infraguard.io/serverKeyUpdated"
 
 
 
@@ -22,23 +43,23 @@
 ########### For Server ip 10.0.1.5 ######################
 
 #Instructions for agent
-getInstruction="https://6ywvm6i971.execute-api.ap-southeast-1.amazonaws.com/prod/getinstructionsforagent"
+#getInstruction="https://6ywvm6i971.execute-api.ap-southeast-1.amazonaws.com/prod/getinstructionsforagent"
 
 # Url for Server Regn Process
-serverRegn="https://09q09swczl.execute-api.ap-southeast-1.amazonaws.com/prod/registerserver"
+#serverRegn="https://09q09swczl.execute-api.ap-southeast-1.amazonaws.com/prod/registerserver"
 
 # Response Url for different activity. Used when agent finishes their job and returns work status
-responseUrl_addUser="https://ptj6vnt5z3.execute-api.ap-southeast-1.amazonaws.com/prod/addeduserbyagent"
-responseUrl_deleteUser="https://4lqi1ahlk9.execute-api.ap-southeast-1.amazonaws.com/prod/deleteduserbyagent"
-responseUrl_changePrivilege="https://tutzygcuol.execute-api.ap-southeast-1.amazonaws.com/prod/privilegechangedbyagent"
-responseUrl_lockDownServer="https://nk7dwmdhk0.execute-api.ap-southeast-1.amazonaws.com/prod/serverlockeddown"
-responseUrl_unlockServer="https://8u0zrz6b61.execute-api.ap-southeast-1.amazonaws.com/prod/unlockserver"
-responseUrl_changePrivEmail="https://4nl4juhge6.execute-api.ap-southeast-1.amazonaws.com/prod/mailsudocredentials"
+#responseUrl_addUser="https://ptj6vnt5z3.execute-api.ap-southeast-1.amazonaws.com/prod/addeduserbyagent"
+#responseUrl_deleteUser="https://4lqi1ahlk9.execute-api.ap-southeast-1.amazonaws.com/prod/deleteduserbyagent"
+#responseUrl_changePrivilege="https://tutzygcuol.execute-api.ap-southeast-1.amazonaws.com/prod/privilegechangedbyagent"
+#responseUrl_lockDownServer="https://nk7dwmdhk0.execute-api.ap-southeast-1.amazonaws.com/prod/serverlockeddown"
+#responseUrl_unlockServer="https://8u0zrz6b61.execute-api.ap-southeast-1.amazonaws.com/prod/unlockserver"
+#responseUrl_changePrivEmail="https://4nl4juhge6.execute-api.ap-southeast-1.amazonaws.com/prod/mailsudocredentials"
 
-responseUrl_mailUpdatedKey="https://fhywo9k1mc.execute-api.ap-southeast-1.amazonaws.com/prod/mailupdatedkey"
-responseUrl_addPubKey="https://3yyritd4vi.execute-api.ap-southeast-1.amazonaws.com/prod/serveraccessgranted"
-responseUrl_deletePubKey="https://qip49r8l0k.execute-api.ap-southeast-1.amazonaws.com/prod/serveraccessrevoked"
-responseUrl_updateServerDefaultUserKey="https://lbx6visyg3.execute-api.ap-southeast-1.amazonaws.com/prod/serverkeyupdated"
+#responseUrl_mailUpdatedKey="https://fhywo9k1mc.execute-api.ap-southeast-1.amazonaws.com/prod/mailupdatedkey"
+#responseUrl_addPubKey="https://3yyritd4vi.execute-api.ap-southeast-1.amazonaws.com/prod/serveraccessgranted"
+#responseUrl_deletePubKey="https://qip49r8l0k.execute-api.ap-southeast-1.amazonaws.com/prod/serveraccessrevoked"
+#responseUrl_updateServerDefaultUserKey="https://lbx6visyg3.execute-api.ap-southeast-1.amazonaws.com/prod/serverkeyupdated"
  
  
 DEFAULT_VALUE="DEFAULT_VALUE"
