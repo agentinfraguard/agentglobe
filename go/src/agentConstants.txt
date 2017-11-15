@@ -14,27 +14,27 @@
 # responseUrl_unlockServer="https://s93ahm7o93.execute-api.us-west-2.amazonaws.com/dev/unlockserver"
 
 
-########### For Testing Server - ip 52.221.15.30  Globe Application ######################
+########### For Cantata Testing Server - ip 13.127.2.236  Globe Application ######################
 
 #Instructions for agent
-getInstruction="http://demo.infraguard.io/getInstructionsForAgent"
+getInstruction="http://13.127.2.236/getInstructionsForAgent"
 
 # Url for Server Regn Process
-serverRegn="http://demo.infraguard.io/serverRegistration"
+serverRegn="http://13.127.2.236/serverRegistration"
 
 
 # Response Url for different activity. Used when agent finishes their job and returns work status
-responseUrl_addUser="http://demo.infraguard.io/addedUserByAgent"
-responseUrl_deleteUser="http://demo.infraguard.io/deletedUserByAgent"
-responseUrl_changePrivilege="http://demo.infraguard.io/privilegeChangedByAgent"
-responseUrl_lockDownServer="http://demo.infraguard.io/serverLockedDown"
-responseUrl_unlockServer="http://demo.infraguard.io/serverUnlocked"
-responseUrl_changePrivEmail="http://demo.infraguard.io/changePrivilegeEmail"
+responseUrl_addUser="http://13.127.2.236/addedUserByAgent"
+responseUrl_deleteUser="http://13.127.2.236/deletedUserByAgent"
+responseUrl_changePrivilege="http://13.127.2.236/privilegeChangedByAgent"
+responseUrl_lockDownServer="http://13.127.2.236/serverLockedDown"
+responseUrl_unlockServer="http://13.127.2.236/serverUnlocked"
+responseUrl_changePrivEmail="http://13.127.2.236/changePrivilegeEmail"
 
-responseUrl_mailUpdatedKey="http://demo.infraguard.io/mailUpdatedKey"
-responseUrl_addPubKey="http://demo.infraguard.io/onRequestServerAccessGranted"
-responseUrl_deletePubKey="http://demo.infraguard.io/serverAccessRevoked"
-responseUrl_updateServerDefaultUserKey="http://demo.infraguard.io/serverKeyUpdated"
+responseUrl_mailUpdatedKey="http://13.127.2.236/mailUpdatedKey"
+responseUrl_addPubKey="http://13.127.2.236/onRequestServerAccessGranted"
+responseUrl_deletePubKey="http://13.127.2.236/serverAccessRevoked"
+responseUrl_updateServerDefaultUserKey="http://13.127.2.236/serverKeyUpdated"
 
 
 
