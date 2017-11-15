@@ -173,7 +173,7 @@ installAgent() {
 
      # Since fedore automatically added '.service' suffix in file name, so here ignore file extn
      if [[ $os == "fedora" ]]; then
-         export command="/etc/init.d/agent_controller" 
+         export command="/etc/init.d/$fileAgentController" 
      else    
          export command="/etc/init.d/$fileAgentController"
      fi
