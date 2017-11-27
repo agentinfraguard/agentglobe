@@ -17,25 +17,26 @@
 ########### For Cantata Testing Server - ip 13.127.2.236  Globe Application ######################
 
 #Instructions for agent
-getInstruction="http://13.127.2.236/getInstructionsForAgent"
+getInstruction="https://9j0o1tkk7f.execute-api.ap-south-1.amazonaws.com/dev/getinstructionsforagent"
 
 # Url for Server Regn Process
-serverRegn="http://13.127.2.236/serverRegistration"
+serverRegn="https://sy2gox7nai.execute-api.ap-south-1.amazonaws.com/dev/registerserver"
 
 
 # Response Url for different activity. Used when agent finishes their job and returns work status
-responseUrl_addUser="http://13.127.2.236/addedUserByAgent"
-responseUrl_deleteUser="http://13.127.2.236/deletedUserByAgent"
-responseUrl_changePrivilege="http://13.127.2.236/privilegeChangedByAgent"
-responseUrl_lockDownServer="http://13.127.2.236/serverLockedDown"
-responseUrl_unlockServer="http://13.127.2.236/serverUnlocked"
+responseUrl_addUser="https://bxhfkzrq62.execute-api.ap-south-1.amazonaws.com/dev/addeduserbyagent"
+responseUrl_deleteUser="https://oek9639rv1.execute-api.ap-south-1.amazonaws.com/dev/deleteduserbyagent"
+responseUrl_changePrivilege="https://ivf5duxwm0.execute-api.ap-south-1.amazonaws.com/dev/privilegechangedbyagent"
+responseUrl_lockDownServer="https://fm607e7918.execute-api.ap-south-1.amazonaws.com/dev/serverlockeddown"
+responseUrl_unlockServer="https://0jrbma1tbh.execute-api.ap-south-1.amazonaws.com/dev/unlockserver"
 responseUrl_changePrivEmail="http://13.127.2.236/changePrivilegeEmail"
 
 responseUrl_mailUpdatedKey="http://13.127.2.236/mailUpdatedKey"
-responseUrl_addPubKey="http://13.127.2.236/onRequestServerAccessGranted"
-responseUrl_deletePubKey="http://13.127.2.236/serverAccessRevoked"
-responseUrl_updateServerDefaultUserKey="http://13.127.2.236/serverKeyUpdated"
-
+responseUrl_addPubKey="https://5edbubn9f5.execute-api.ap-south-1.amazonaws.com/dev/serveraccessgranted"
+responseUrl_deletePubKey="https://lbjnup2g5h.execute-api.ap-south-1.amazonaws.com/dev/serveraccessrevoked"
+responseUrl_updateServerDefaultUserKey="https://3a4tplkdj9.execute-api.ap-south-1.amazonaws.com/dev/serverkeyupdated"
+responseUrl_getEnvList="http://13.127.2.236/environmentVariablesData"
+responseUrl_getProcessList="http://13.127.2.236/processListData"
 
 
 
