@@ -35,7 +35,7 @@ responseUrl_mailUpdatedKey="http://13.127.2.236/mailUpdatedKey"
 responseUrl_addPubKey="https://5edbubn9f5.execute-api.ap-south-1.amazonaws.com/dev/serveraccessgranted"
 responseUrl_deletePubKey="https://lbjnup2g5h.execute-api.ap-south-1.amazonaws.com/dev/serveraccessrevoked"
 responseUrl_updateServerDefaultUserKey="https://3a4tplkdj9.execute-api.ap-south-1.amazonaws.com/dev/serverkeyupdated"
-responseUrl_getEnvList="http://13.127.2.236/environmentVariablesData"
+responseUrl_getEnv="http://13.127.2.236/environmentVariablesData"
 responseUrl_getProcessList="http://13.127.2.236/processListData"
 
 
