@@ -57,7 +57,7 @@ getLinuxType(){
 
           if [[ $osType == "fedora" ]]; then
              os="fedora"
-             fileAgentController="agent_controller.service"
+             fileAgentController="agent_controller"
           fi
         break;
 
