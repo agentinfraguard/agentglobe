@@ -169,7 +169,7 @@ installAgent() {
      fi
  
 
-     export start="restart"
+     export start="start"
 
      # Since fedore automatically added '.service' suffix in file name, so here ignore file extn
      if [[ $os == "fedora" ]]; then
