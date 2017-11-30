@@ -57,7 +57,7 @@ getLinuxType(){
 
           if [[ $osType == "fedora" ]]; then
              os="fedora"
-             fileAgentController="agent_controller.service"
+             fileAgentController="agent_controller"
           fi
         break;
 
@@ -80,9 +80,8 @@ getFilePath(){
     #echo "File Name = : $fileName"
     gitFullPath=""
 
-    if [[ $fileName == "agent_controller.sh"  ||
-         $fileName == "agent_controller.service" ||
-         $fileName == "agent_controller_ubuntu.sh" ]]; then
+    if [[ $fileName == "agent_controller" ||
+          $fileName == "agent_controller_ubuntu.sh" ]]; then
        gitFullPath="https://raw.githubusercontent.com/$repoName/agentglobe/master/scripts/$fileName"
 
     fi
@@ -177,7 +176,8 @@ installAgent() {
      else    
          export command="/etc/init.d/$fileAgentController"
      fi
-     echo "command: $command ${start}"   
+     
+     echo "command: $command ${start}"
      sh $command ${start}
 
    
@@ -197,7 +197,6 @@ installAgent() {
 echo "Checking whether agent already installed/running or not."
 pId=$(ps -ef | grep 'infraGuardMain' | grep -v 'grep' | awk '{ printf $2 }')
 file="/opt/infraguard/sbin/infraGuardMain"
-echo "pId: $pId"
 
 if [ -f "$file" ]
   then
