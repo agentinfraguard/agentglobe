@@ -15,11 +15,12 @@
 
 start() {
 
-    echo ""
+    echo "Going to execute start function"
     echo $"***********  agent_controller service started. Triggered from /etc/init.d/agent_controller.service ***********"
 
     command="/opt/infraguard/sbin/infraGuardMain"
     $command >/dev/null 2>&1 &
+    echo "End of start function : $?"
 }
 
 # To execute this from CLI --> /etc/init.d/agent_controller.service stop
