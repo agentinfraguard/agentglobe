@@ -177,7 +177,7 @@ installAgent() {
      else    
          export command="/etc/init.d/$fileAgentController"
      fi
-        
+     echo "command: $command ${start}"   
      sh $command ${start}
 
    
@@ -197,6 +197,7 @@ installAgent() {
 echo "Checking whether agent already installed/running or not."
 pId=$(ps -ef | grep 'infraGuardMain' | grep -v 'grep' | awk '{ printf $2 }')
 file="/opt/infraguard/sbin/infraGuardMain"
+echo "pId: $pId"
 
 if [ -f "$file" ]
   then
