@@ -57,7 +57,7 @@ getLinuxType(){
 
           if [[ $osType == "fedora" ]]; then
              os="fedora"
-             fileAgentController="agent_controller"
+             fileAgentController="agent_controller.service"
           fi
         break;
 
@@ -81,7 +81,7 @@ getFilePath(){
     gitFullPath=""
 
     if [[ $fileName == "agent_controller.sh"  ||
-         $fileName == "agent_controller" ||
+         $fileName == "agent_controller.service" ||
          $fileName == "agent_controller_ubuntu.sh" ]]; then
        gitFullPath="https://raw.githubusercontent.com/$repoName/agentglobe/master/scripts/$fileName"
 
@@ -173,12 +173,11 @@ installAgent() {
 
      # Since fedore automatically added '.service' suffix in file name, so here ignore file extn
      if [[ $os == "fedora" ]]; then
-         export command="/etc/init.d/agent_controller" 
+         export command="/etc/init.d/$fileAgentController" 
      else    
          export command="/etc/init.d/$fileAgentController"
      fi
-     
-     echo "command: $command ${start}"
+        
      sh $command ${start}
 
    
