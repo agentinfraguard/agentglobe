@@ -57,7 +57,7 @@ getLinuxType(){
 
           if [[ $osType == "fedora" ]]; then
              os="fedora"
-             fileAgentController="agent_controller"
+             fileAgentController="agent_controller.service"
           fi
         break;
 
@@ -173,7 +173,7 @@ installAgent() {
 
      # Since fedore automatically added '.service' suffix in file name, so here ignore file extn
      if [[ $os == "fedora" ]]; then
-         export command="/etc/init.d/$fileAgentController" 
+         export command="/etc/init.d/agent_controller" 
      else    
          export command="/etc/init.d/$fileAgentController"
      fi
