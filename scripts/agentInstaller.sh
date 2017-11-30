@@ -80,8 +80,9 @@ getFilePath(){
     #echo "File Name = : $fileName"
     gitFullPath=""
 
-    if [[ $fileName == "agent_controller" ||
-          $fileName == "agent_controller_ubuntu.sh" ]]; then
+    if [[ $fileName == "agent_controller.sh"  ||
+         $fileName == "agent_controller" ||
+         $fileName == "agent_controller_ubuntu.sh" ]]; then
        gitFullPath="https://raw.githubusercontent.com/$repoName/agentglobe/master/scripts/$fileName"
 
     fi
@@ -248,9 +249,3 @@ removeProcessCmd=$removeProcessCmd
 EOL
 
 installAgent
-
-
-
-
-
-
