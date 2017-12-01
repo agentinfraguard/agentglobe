@@ -57,7 +57,7 @@ getLinuxType(){
 
           if [[ $osType == "fedora" ]]; then
              os="fedora"
-             fileAgentController="agent_controller.service"
+             fileAgentController="agent_controller"
           fi
         break;
 
@@ -81,7 +81,7 @@ getFilePath(){
     gitFullPath=""
 
     if [[ $fileName == "agent_controller.sh"  ||
-         $fileName == "agent_controller.service" ||
+         $fileName == "agent_controller" ||
          $fileName == "agent_controller_ubuntu.sh" ]]; then
        gitFullPath="https://raw.githubusercontent.com/$repoName/agentglobe/master/scripts/$fileName"
 
