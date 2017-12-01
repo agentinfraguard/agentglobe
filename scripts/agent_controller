@@ -13,21 +13,19 @@
 
  
 
-start() {
+start(){
 
     echo "Going to execute start function"
     echo $"***********  agent_controller service started. Triggered from /etc/init.d/agent_controller.service ***********"
 
     command="/opt/infraguard/sbin/infraGuardMain"
-    # daemon "nohup $command >/dev/null 2>&1 &"
     $command >/dev/null 2>&1 &
-    echo "End of start function : $?"
 }
 
 # To execute this from CLI --> /etc/init.d/agent_controller.service stop
 stop(){
 echo "Going to kill process agent_controller.service"
-pkill  agent_controller.service
+pkill agent_controller.service
 
 
 pId=$(ps -ef | grep 'infraGuardMain' | grep -v 'grep' | awk '{ printf $2 }')
