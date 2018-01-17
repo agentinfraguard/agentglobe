@@ -246,7 +246,6 @@ if [ -f "$file" ]
    
 fi
 
-echo "hello count: $#"
 if [ $# -ne 6 ] ; then
     echo "Insufficient arguments. Usage: $0 serverName projectId licenseKey accountId companyId"
     exit 1

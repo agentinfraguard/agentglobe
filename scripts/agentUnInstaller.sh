@@ -42,7 +42,7 @@ fi
 if [ "$isProcessRunning" -gt 0 ]; then
   echo "Killing the process..."
   stopService
-  killTheProcess
+  # killTheProcess
 else
    echo "Detected - Agent already stopped."
 fi
@@ -112,41 +112,37 @@ determineProcessRunningOrNot(){
 } # DetermineProcessRunningOrNot
 
 
-killTheProcess(){
+# killTheProcess(){
+#    echo "Going to kill process id = : $PID by using normal signal."
+#    echo "Signal -9 will be fire only after 10 seconds if unable to kill process normally ... "
    
-   
-   echo "Going to kill process id = : $PID by using normal signal."
-   echo "Signal -9 will be fire only after 10 seconds if unable to kill process normally ... "
-   
-   # Number of seconds to wait before using "kill -9"
-   WAIT_SECONDS=10
+#    # Number of seconds to wait before using "kill -9"
+#    WAIT_SECONDS=10
 
-   # Counter to keep count of how many seconds have passed
-   count=0
+#    # Counter to keep count of how many seconds have passed
+#    count=0
 
-   while kill $PID > /dev/null
-   do
-       # Wait for one second
-       sleep 1
-       # Increment the second counter
-       ((count++))
+#    while kill $PID > /dev/null
+#    do
+#        # Wait for one second
+#        sleep 1
+#        # Increment the second counter
+#        ((count++))
 
-       # Has the process been killed? If so, exit the loop.
-       if ! ps -p $PID > /dev/null ; then
-           break
-       fi
+#        # Has the process been killed? If so, exit the loop.
+#        if ! ps -p $PID > /dev/null ; then
+#            break
+#        fi
 
-       # Have we exceeded $WAIT_SECONDS? If so, kill the process with "kill -9"
-       # and exit the loop
-       if [ $count -gt $WAIT_SECONDS ]; then
-           kill -9 $PID
-           break
-       fi
-   done
-   echo "Process has been killed after $count seconds."
-
-
-}
+#        # Have we exceeded $WAIT_SECONDS? If so, kill the process with "kill -9"
+#        # and exit the loop
+#        if [ $count -gt $WAIT_SECONDS ]; then
+#            kill -9 $PID
+#            break
+#        fi
+#    done
+#    echo "Process has been killed after $count seconds."
+# }
 
 # Check whether user has root level access or not.
 if [ `id -u` -ne 0 ] ; then
