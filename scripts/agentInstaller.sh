@@ -31,35 +31,34 @@ create_InfraGuardDirectories(){
 }
 
 create_systemd_file(){
-    cat > /etc/systemd/system/agentService.service << EOL
-    [Unit]
-    Description=agentService starts /opt/infraguard/sbin/$fileAgentController
-
-    [Service]
-    Type=forking
-    ExecStart=/opt/infraguard/sbin/$fileAgentController start
-    Restart=on-failure
-    RestartSec=2
-
-    [Install]
-    WantedBy=multi-user.target
-    EOL
+    fileName="/etc/systemd/system/agentService.service"
+    echo "[Unit]" >> $fileName
+    echo "Description=agentService starts /opt/infraguard/sbin/$fileAgentController" >> $fileName
+    echo "" >> $fileName
+    echo "[Service]" >> $fileName
+    echo "Type=forking" >> $fileName
+    echo "ExecStart=/opt/infraguard/sbin/$fileAgentController start" >> $fileName
+    echo "Restart=on-failure" >> $fileName
+    echo "RestartSec=2" >> $fileName
+    echo "" >> $fileName
+    echo "[Install]" >> $fileName
+    echo "WantedBy=multi-user.target" >> $fileName
 }
 
 start_systemd_service(){
-    exec = "chmod 744 /opt/infraguard/sbin/$fileAgentController"
+    exec="chmod 744 /opt/infraguard/sbin/$fileAgentController"
     $exec
     
-    exec = "chmod 664 /etc/systemd/system/agentService.service"
+    exec="chmod 664 /etc/systemd/system/agentService.service"
     $exec
 
-    exec = "systemctl daemon-reload"
+    exec="systemctl daemon-reload"
     $exec
 
-    exec = "systemctl enable agentService.service"
+    exec="systemctl enable agentService.service"
     $exec
 
-    exec = "systemctl start agentService.service"
+    exec="systemctl start agentService.service"
     $exec
 }
 
@@ -247,8 +246,8 @@ if [ -f "$file" ]
    
 fi
 
-
-if [ $# -ne 5 ] ; then
+echo "hello count: $#"
+if [ $# -ne 6 ] ; then
     echo "Insufficient arguments. Usage: $0 serverName projectId licenseKey accountId companyId"
     exit 1
 fi
@@ -282,4 +281,4 @@ os=$os
 removeProcessCmd=$removeProcessCmd
 EOL
 
-installAgent
+installAgent    

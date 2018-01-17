@@ -2,19 +2,19 @@
 
 
 stopService(){
-  exec = "systemctl stop agentService.service"
+  exec="systemctl stop agentService.service"
   $exec
 
-  exec = "systemctl disable agentService.service"
+  exec="systemctl disable agentService.service"
   $exec
 
-  exec = "rm /etc/systemd/system/agentService.service"
+  exec="rm /etc/systemd/system/agentService.service"
   $exec
 
-  exec = "systemctl daemon-reload"
+  exec="systemctl daemon-reload"
   $exec
 
-  exec = "systemctl reset-failed"
+  exec="systemctl reset-failed"
   $exec
 }
 
