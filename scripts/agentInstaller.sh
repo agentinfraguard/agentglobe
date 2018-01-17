@@ -15,21 +15,52 @@ create_InfraGuardDirectories(){
     exec="touch  /var/logs/infraguard/activityLog"
     $exec
 
-   
     exec="chmod 700 -R /opt/infraguard"
     $exec
+    
     exec="chown root:root /opt/infraguard"
     $exec
 
-
     exec="chmod 700 -R /var/logs/infraguard"
     $exec
+    
     exec="chown root:root /var/logs/infraguard"
     $exec
 
     echo "completed Directories Creation"
+}
 
+create_systemd_file(){
+    cat > /etc/systemd/system/agentService.service << EOL
+    [Unit]
+    Description=agentService starts /opt/infraguard/sbin/$fileAgentController
 
+    [Service]
+    Type=forking
+    ExecStart=/opt/infraguard/sbin/$fileAgentController start
+    Restart=on-failure
+    RestartSec=2
+
+    [Install]
+    WantedBy=multi-user.target
+    EOL
+}
+
+start_systemd_service(){
+    exec = "chmod 744 /opt/infraguard/sbin/$fileAgentController"
+    $exec
+    
+    exec = "chmod 664 /etc/systemd/system/agentService.service"
+    $exec
+
+    exec = "systemctl daemon-reload"
+    $exec
+
+    exec = "systemctl enable agentService.service"
+    $exec
+
+    exec = "systemctl start agentService.service"
+    $exec
 }
 
 
@@ -106,15 +137,16 @@ installAgent() {
     #echo "gitFullPath = : $gitFullPath"
     echo "Downloading $fileAgentController "
     #local url="wget -O /tmp/$fileAgentController https://raw.githubusercontent.com/agentinfraguard/agent/master/scripts/$fileAgentController"
-    local url="wget -O /tmp/$fileAgentController $gitFullPath --no-check-certificate "
+    # local url="wget -O /tmp/$fileAgentController $gitFullPath --no-check-certificate "
+    local url="wget -O /opt/infraguard/sbin/$fileAgentController $gitFullPath --no-check-certificate "
     wget $url--progress=dot $url 2>&1 | grep --line-buffered "%" | sed -u -e "s,\.,,g" | awk '{printf("\b\b\b\b%4s", $2)}'
-    command="mv /tmp/$fileAgentController  /etc/init.d"
-    $command
-    exec="chown root:root /etc/init.d/$fileAgentController"
-    $exec
-    exec="chmod 755 /etc/init.d/$fileAgentController"
-    $exec
-    echo "gitFullPath = : $gitFullPath"
+    # command="mv /tmp/$fileAgentController  /etc/init.d"
+    # $command
+    # exec="chown root:root /etc/init.d/$fileAgentController"
+    # $exec
+    # exec="chmod 755 /etc/init.d/$fileAgentController"
+    # $exec
+    # echo "gitFullPath = : $gitFullPath"
 
     echo ""  
     echo "create  /tmp/serverInfo.txt with following data $serverName:$projectId:$licenseKe >> It will remove after server regn."
@@ -157,28 +189,29 @@ installAgent() {
     exec="chmod 700 /opt/infraguard/etc/agentConstants.txt"
     $exec
 
-
+    create_systemd_file
+    start_systemd_service
    
 
-     if [[ "$os" = "debian" ]] ;then
-            echo "Going to call  update-rc.d for $fileAgentController --------"
-            update-rc.d $fileAgentController defaults
-     else
-            echo "Going to call  chkconfig for $fileAgentController --------"
-             chkconfig --add /etc/init.d/$fileAgentController     
-     fi
+     # if [[ "$os" = "debian" ]] ;then
+     #        echo "Going to call  update-rc.d for $fileAgentController --------"
+     #        update-rc.d $fileAgentController defaults
+     # else
+     #        echo "Going to call  chkconfig for $fileAgentController --------"
+     #         chkconfig --add /etc/init.d/$fileAgentController     
+     # fi
  
 
-     export start="start"
+     # export start="start"
 
-     # Since fedore automatically added '.service' suffix in file name, so here ignore file extn
-     if [[ $os == "fedora" ]]; then
-         export command="/etc/init.d/$fileAgentController" 
-     else    
-         export command="/etc/init.d/$fileAgentController"
-     fi
+     # # Since fedore automatically added '.service' suffix in file name, so here ignore file extn
+     # if [[ $os == "fedora" ]]; then
+     #     export command="/etc/init.d/$fileAgentController" 
+     # else    
+     #     export command="/etc/init.d/$fileAgentController"
+     # fi
         
-     sh $command ${start}
+     # sh $command ${start}
 
    
     } # downloadFiles_FromGitHub
@@ -215,8 +248,8 @@ if [ -f "$file" ]
 fi
 
 
-if [ $# -ne 3 ] ; then
-    echo "Insufficient arguments. Usage: $0 serverName projectId licenseKey"
+if [ $# -ne 5 ] ; then
+    echo "Insufficient arguments. Usage: $0 serverName projectId licenseKey accountId companyId"
     exit 1
 fi
 
@@ -226,6 +259,8 @@ checkUserPrivileges
 serverName=$1
 projectId=$2
 licenseKey=$3
+accountId=$4
+companyId=$5
 gitFullPath=""
 
 # Default value for os & fileAgentController is based on Amazon Linux AMI i.e rhel fedora

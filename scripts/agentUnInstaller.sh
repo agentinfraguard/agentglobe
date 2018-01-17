@@ -1,6 +1,23 @@
 #!/bin/bash
 
 
+stopService(){
+  exec = "systemctl stop agentService.service"
+  $exec
+
+  exec = "systemctl disable agentService.service"
+  $exec
+
+  exec = "rm /etc/systemd/system/agentService.service"
+  $exec
+
+  exec = "systemctl daemon-reload"
+  $exec
+
+  exec = "systemctl reset-failed"
+  $exec
+}
+
 uninstall(){
  
 getValue "serviceFile"    
@@ -24,6 +41,7 @@ fi
 
 if [ "$isProcessRunning" -gt 0 ]; then
   echo "Killing the process..."
+  stopService
   killTheProcess
 else
    echo "Detected - Agent already stopped."
