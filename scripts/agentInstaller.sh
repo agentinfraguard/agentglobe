@@ -246,7 +246,7 @@ if [ -f "$file" ]
    
 fi
 
-if [ $# -ne 6 ] ; then
+if [ $# -ne 5 ] ; then
     echo "Insufficient arguments. Usage: $0 serverName projectId licenseKey accountId companyId"
     exit 1
 fi
