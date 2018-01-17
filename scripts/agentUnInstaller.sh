@@ -21,7 +21,7 @@ stopService(){
 uninstall(){
  
 getValue "serviceFile"    
-getValue "removeProcessCmd"    
+# getValue "removeProcessCmd"    
 
 
 # value of serviceFile was saved at the time of agent installation and it may be
@@ -32,8 +32,13 @@ echo "serviceFile = : $serviceFile"
 
 # Since serviceFile file exist in /etc/init.d/ directory. So ensure proper file MUST BE EXIST( to 
 # ignore accidental deletion of entire contents in /etc/init.d folder)
-if [[ $serviceFile != *"agent_controller"*  ||
-         $removeProcessCmd != *"agent_controller"* ]]; then
+# if [[ $serviceFile != *"agent_controller"*  ||
+#          $removeProcessCmd != *"agent_controller"* ]]; then
+#    echo "No valid service file found. Abort process..."
+#    exit 1
+# fi
+
+if [[ $serviceFile != *"agent_controller"* ]]; then
    echo "No valid service file found. Abort process..."
    exit 1
 fi
@@ -52,7 +57,7 @@ fi
 # On the basis of linux type either it has update-rc.d -f ... or chkconfig --del  ....
 # value of removeProcessCmd was saved at the time of agent installation
 echo "Restrict process to restart on reboot..."
-$removeProcessCmd 
+# $removeProcessCmd 
 
 
 echo "Deleting /opt/infraguard/ directory..."
@@ -87,9 +92,9 @@ getValue(){
               serviceFile=$val
          fi
 
-         if [[ $line == "removeProcessCmd"* ]]; then
-              removeProcessCmd=$val
-         fi
+         # if [[ $line == "removeProcessCmd"* ]]; then
+         #      removeProcessCmd=$val
+         # fi
 
          break;
       fi
@@ -164,7 +169,7 @@ determineProcessRunningOrNot
 
 
 serviceFile=""
-removeProcessCmd=""
+# removeProcessCmd=""
 uninstall
 
 
