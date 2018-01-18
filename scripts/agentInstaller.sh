@@ -32,7 +32,7 @@ create_InfraGuardDirectories(){
 
 create_systemd_file(){
     fileName="/etc/systemd/system/agentService.service"
-    echo "[Unit]" >> $fileName
+    echo "[Unit]" > $fileName
     echo "Description=agentService starts /opt/infraguard/sbin/$fileAgentController" >> $fileName
     echo "" >> $fileName
     echo "[Service]" >> $fileName
