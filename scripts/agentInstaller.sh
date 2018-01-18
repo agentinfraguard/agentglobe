@@ -147,9 +147,8 @@ installAgent() {
     # $exec
     # echo "gitFullPath = : $gitFullPath"
 
-    echo ""  
-    echo "create  /tmp/serverInfo.txt with following data $serverName:$projectId:$licenseKe >> It will remove after server regn."
-    echo "$serverName:$projectId:licenseKey" > /tmp/serverInfo.txt
+    echo "create  /tmp/serverInfo.txt with following data $serverName:$projectId:$licenseKey:$accountId:$companyId >> It will remove after server regn."
+    echo "$serverName:$projectId:$licenseKey:$accountId:$companyId" > /tmp/serverInfo.txt
 
 
 
