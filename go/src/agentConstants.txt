@@ -39,6 +39,9 @@ responseUrl_getEnv="http://13.127.2.236/environmentVariablesData"
 responseUrl_getProcessList="http://13.127.2.236/processListData"
 responseUrl_auditLogin="http://13.127.2.236/auditLoginData"
 responseUrl_scriptManager="http://13.127.2.236/scriptExecuttionStatus"
+responseUrl_addCron="http://13.127.2.236/addCronStatus"
+responseUrl_removeCron="http://13.127.2.236/removeCronStatus"
+responseUrl_statusCron="http://13.127.2.236/updateSatusCron"
 
 
 
